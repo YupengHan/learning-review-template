@@ -3,7 +3,7 @@
 Answered: {{N}}/10
 
 ## Q-{{ID}} — ANSWERED
-- AI: chatgpt | claude | gemini
+- AI / Tool: {{AI_TOOL}}
 - Link: {{SHARE_LINK}}
 - Result: PASS | ERRORS
 - Errors: {{ERROR_IDS}}

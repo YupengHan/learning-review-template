@@ -1,12 +1,12 @@
 # Learning Review Template
 
-A lightweight, AI-powered spaced-repetition review system for any technical subject. Uses **3 AI tools** in a pipeline to generate questions, discuss answers, and track gaps over time.
+A lightweight, AI-powered spaced-repetition review system for any technical subject. Uses AI in a simple pipeline to generate questions, discuss answers, and track gaps over time.
 
 | Step | Tool | Role |
 |------|------|------|
-| Generate questions | GPT Pro web | Generate 10 questions from your notes repo |
-| Answer questions | GPT / Claude / Gemini web | Multi-round discussion per question (produces share links) |
-| Grade & record | Claude Code (this repo) | Grade conversations, log errors, update review queue |
+| Generate questions | Any question-generation AI | Generate 10 questions from your notes repo or pasted context |
+| Answer questions | Any AI chat tool | Multi-round discussion per question (share links or pasted transcripts) |
+| Grade & record | Any local AI coding assistant | Grade conversations, log errors, update review queue |
 
 Built on Markdown + YAML + JSONL + CSV. No database, no complex tooling.
 
@@ -28,45 +28,46 @@ Built on Markdown + YAML + JSONL + CSV. No database, no complex tooling.
 
 ## Daily Workflow
 
-### Step 1: Generate Questions (GPT Pro web)
+### Step 1: Generate Questions (Any AI)
 
-1. Open a new GPT Pro conversation
+1. Open a new conversation in your preferred AI
 2. Copy the prompt from `prompts/generate-questions.md` and paste it
-3. GPT Pro reads your GitHub repo and generates 10 questions
-4. If you have weak topics from yesterday's session, paste them too
+3. Give the AI your repo context (GitHub link, pasted notes, or attached files)
+4. Generate 10 questions
+5. If you have weak topics from yesterday's session, paste them too
 
-### Step 2: Answer Questions (GPT / Claude / Gemini web)
+### Step 2: Answer Questions (Any AI)
 
 1. Pick questions to answer today (you don't have to do all 10)
-2. For each question, open a **new conversation** in any AI web tool
+2. For each question, open a **new conversation** in any AI tool you like
 3. Type your answer first, then discuss multi-round to deepen understanding
-4. When done, **get the share link** for the conversation
+4. When done, save a **share link** if the tool supports it; otherwise keep a transcript or summary you can paste later
 
-### Step 3: Grade & Record (Claude Code)
+### Step 3: Grade & Record (Any local AI coding assistant)
 
-Open this repo in Claude Code and say:
+Open this repo in a local AI coding assistant that can read/write files and fetch links, then say:
 
 ```
 Read prompts/grade-answers.md.
 
-Today's 10 questions from GPT Pro:
+Today's 10 questions from the question-generation AI:
 [paste the 10 questions here]
 
 I answered 4 questions:
-- Q1: https://chatgpt.com/share/xxx
-- Q3: https://claude.ai/share/xxx
-- Q5: https://g.co/gemini/share/xxx
-- Q7: https://chatgpt.com/share/xxx
+- Q1: [Tool: YOUR_AI_TOOL] https://example.com/share/xxx
+- Q3: [Tool: YOUR_AI_TOOL] https://example.com/share/yyy
+- Q5: [Tool: YOUR_AI_TOOL] pasted transcript below
+- Q7: [Tool: YOUR_AI_TOOL] https://example.com/share/zzz
 ```
 
-Claude Code will:
+Your assistant will:
 - Record questions to `daily/YYYY-MM-DD/questions.md` and `questions/bank.yaml`
-- Fetch each share link to read your conversation
+- Fetch each share link or use your pasted transcript to read the conversation
 - Grade your final understanding (not your first attempt)
 - Log errors to `errors/log.jsonl` with full context
 - Update `queue/review-queue.csv`
 - Generate `daily/YYYY-MM-DD/summary.md`
-- Print weak topics you can feed to GPT Pro tomorrow
+- Print weak topics you can feed to the question generator tomorrow
 
 ### (Optional) Step 4: Update Summaries
 
@@ -85,7 +86,7 @@ learning-review/
 ├── state.yaml                 # Last reviewed commit, ID counters
 │
 ├── daily/YYYY-MM-DD/          # One folder per session
-│   ├── questions.md           #   10 questions (from GPT Pro)
+│   ├── questions.md           #   10 questions (from your question-generation AI)
 │   ├── answers.md             #   Share links + results
 │   └── summary.md             #   Stats, errors, weak topics for tomorrow
 │
@@ -101,9 +102,9 @@ learning-review/
 ├── weekly/YYYY-WXX.md         # Weekly summaries
 │
 ├── prompts/                   # AI agent instructions
-│   ├── generate-questions.md  #   Portable prompt for GPT Pro web
-│   ├── grade-answers.md       #   For Claude Code: grade share links
-│   └── update-queue.md        #   For Claude Code: rebuild summaries
+│   ├── generate-questions.md  #   Portable prompt for any question-generation AI
+│   ├── grade-answers.md       #   For your local grading assistant
+│   └── update-queue.md        #   For your local maintenance assistant
 │
 └── templates/                 # File format templates
     ├── questions.md
@@ -157,10 +158,10 @@ Questions enter the review queue when answered. Intervals: **1 → 3 → 7 → 1
 
 ## Closing the Loop
 
-At the end of each grading session, Claude Code outputs a **"Weak Topics"** block. Copy it and paste into GPT Pro's question generation prompt under "Extra Context":
+At the end of each grading session, your grading assistant outputs a **"Weak Topics"** block. Copy it and paste into your next question-generation prompt under "Extra Context":
 
 ```
-errors → weak topics → GPT Pro prioritizes → you practice → errors shrink
+errors -> weak topics -> question generator prioritizes -> you practice -> errors shrink
 ```
 
 ---
@@ -170,4 +171,4 @@ errors → weak topics → GPT Pro prioritizes → you practice → errors shrin
 - **Don't force 10/10:** Answering 3-5 questions well beats rushing through 10
 - **Start conversations with your own answer:** Don't ask the AI to explain first
 - **Review `errors/by-topic.md` weekly** to spot persistent weak areas
-- **Share links are your study log:** Re-open any conversation to revisit the discussion
+- **Share links or transcripts are your study log:** Revisit any conversation later if you need to review the discussion

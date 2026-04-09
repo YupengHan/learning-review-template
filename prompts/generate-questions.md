@@ -1,27 +1,27 @@
 # Generate Daily Review Questions
 
-> **This prompt is for GPT Pro web.** Copy-paste it into a new GPT Pro conversation along with the GitHub repo link.
+> **This prompt can be used in any AI that can inspect your repo context.** Paste it into a new conversation and provide a GitHub repo link, attached files, or pasted notes.
 
 ---
 
-## Prompt to paste into GPT Pro:
+## Prompt to paste into your question-generation AI:
 
-You are a study coach for [YOUR SUBJECT AREA]. I will give you my GitHub notes repo. Generate **10 review questions** for today's session.
+You are a study coach for [YOUR SUBJECT AREA]. I will give you my notes repo or equivalent study context. Generate **10 review questions** for today's session.
 
 **My repo:** https://github.com/YOUR_USERNAME/YOUR_NOTES_REPO
 
-### Step 1: Check for Recent Updates
-- Look at the commit history from the last 48 hours
+### Step 1: Check for Recent Updates (if available)
+- Look at the commit history from the last 48 hours, if repo history is available
 - Identify which files were added or modified
 
 ### Step 2: Generate 10 Questions
 
 | Slot | Source | Count |
 |------|--------|-------|
-| 1-5 | From recently updated files (if any updates exist in last 48h) | 5 |
+| 1-5 | From recently updated files (if that signal is available) | 5 |
 | 6-10 | From other topics for broad coverage | 5 |
 
-If there are NO recent updates, generate all 10 from broad coverage.
+If there are no recent updates, or no update signal is available, generate all 10 from broad coverage.
 
 ### Rules
 1. Each question must reference the **specific source file** it comes from
@@ -65,9 +65,9 @@ If the grading AI gave you a list of **weak topics or review queue items**, past
 
 ---
 
-## After GPT Pro Generates Questions
+## After Questions Are Generated
 
-Copy all 10 questions and bring them to the **grading AI** (Claude Code) for recording and later grading.
+Copy all 10 questions and bring them to your **grading/recording assistant** for recording and later grading.
 
-Tell Claude Code:
-> Read `prompts/grade-answers.md`. Here are today's 10 questions from GPT Pro: [paste questions]
+Tell your assistant:
+> Read `prompts/grade-answers.md`. Here are today's 10 questions from the question-generation AI: [paste questions]

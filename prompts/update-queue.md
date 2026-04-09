@@ -61,7 +61,7 @@ Read `queue/review-queue.csv` and:
 
 ## Part 3: Generate Weak Topics List
 
-Produce a "weak topics" block the user can paste into GPT Pro for next session's question generation:
+Produce a "weak topics" block the user can paste into the next question-generation session:
 
 ```
 Weak topics to prioritize:
@@ -85,7 +85,7 @@ If today is the last day of the ISO week, create `weekly/YYYY-WXX.md`:
 - Questions attempted: N / M generated
 - Completion rate: X%
 - Errors logged: N
-- Conversations: {chatgpt: N, claude: N, gemini: N}
+- Conversation sources: {tool_name: N, ...}
 
 ## Topics Covered
 - {{topic}}: N questions attempted, M errors

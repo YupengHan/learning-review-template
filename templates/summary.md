@@ -9,10 +9,10 @@
 - Weakest topic today: {{TOPIC}}
 
 ## Conversations
-| Q | AI | Result | Link |
-|---|-----|--------|------|
-| Q-{{ID}} | chatgpt | PASS | [link]({{URL}}) |
-| Q-{{ID}} | claude | 2 errors | [link]({{URL}}) |
+| Q | AI / Tool | Result | Link |
+|---|-----------|--------|------|
+| Q-{{ID}} | {{AI_TOOL}} | PASS | [link]({{URL}}) |
+| Q-{{ID}} | {{AI_TOOL}} | 2 errors | [link]({{URL}}) |
 | Q-{{ID}} | — | skipped | — |
 
 ## Errors Logged
@@ -23,7 +23,7 @@
 ## Spaced Review Due Tomorrow
 - {{QUESTION_LIST}}
 
-## Weak Topics to Feed to GPT Pro
+## Weak Topics for Next Question Generation
 ```
-{{PASTE_BLOCK_FOR_GPT_PRO}}
+{{PASTE_BLOCK_FOR_NEXT_AI}}
 ```
