@@ -1,0 +1,22 @@
+# Topic Taxonomy — Example
+# Maps review topics to source files in your notes repo.
+# Copy this to taxonomy.yaml and replace with your own topics and files.
+
+topics:
+
+  your-topic-1:
+    source_files:
+      - docs/your-chapter-1.md
+    sub_topics:
+      - sub-topic-a
+      - sub-topic-b
+      - sub-topic-c
+
+  your-topic-2:
+    source_files:
+      - docs/your-chapter-2.md
+    sub_topics:
+      - sub-topic-a
+      - sub-topic-b
+
+  # Add more topics following the same structure...

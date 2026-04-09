@@ -1,0 +1,41 @@
+# LLM Review System Configuration — Example
+# Copy this to config.yaml and fill in your own values.
+
+source_repo: /path/to/your/notes-repo
+source_repo_remote: https://github.com/YOUR_USERNAME/YOUR_NOTES_REPO
+review_repo: /path/to/this/llm-review-repo
+
+# Daily question generation
+daily_question_count: 10
+new_from_recent_commits: 5        # questions targeting recent repo changes (if updates exist)
+new_from_general: 5               # questions from general topics / weak areas / review queue
+max_review_queue_per_day: 5       # cap on spaced-repetition reviews per day
+
+# Workflow: questions generated in GPT Pro web, answers are share links
+question_source: "GPT Pro web (user pastes GitHub repo + prompt)"
+answer_format: "share links from GPT/Gemini/Claude web conversations"
+
+# Spaced repetition intervals (days)
+spaced_intervals: [1, 3, 7, 14]
+mastery_threshold_streak: 3       # streak at interval 14 -> mastered
+
+# Error classification
+error_types:
+  concept-unclear:       "Cannot explain the concept in own words; vague or circular"
+  bad-structure:         "Correct content but poorly organized; would fail interview for rambling"
+  missed-tradeoffs:      "States one side of a design choice without acknowledging the cost"
+  factual-error:         "Incorrect number, formula, attribution, or mechanism"
+  insufficient-examples: "Concept stated abstractly without concrete grounding"
+  not-interview-ready:   "Technically OK but would not pass live interview (too long, no summary, no structure)"
+
+severity_levels: [minor, major, critical]
+
+# Question difficulty levels
+difficulty_levels:
+  - foundational       # single concept recall
+  - intermediate       # explain mechanism or compare two things
+  - advanced           # multi-step reasoning, derive formula, design decision
+  - synthesis          # cross-topic integration
+
+# Self-assessment scale
+assessment_scale: "1-5 (1=no idea, 2=vague, 3=partial, 4=mostly correct, 5=interview-ready)"

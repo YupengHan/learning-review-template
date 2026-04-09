@@ -1,0 +1,16 @@
+# Personal config (copy from *.example.yaml files)
+config.yaml
+taxonomy.yaml
+
+# Personal data
+daily/
+weekly/
+errors/log.jsonl
+errors/by-topic.md
+errors/by-type.md
+queue/review-queue.csv
+questions/bank.yaml
+state.yaml
+
+# OS
+.DS_Store
